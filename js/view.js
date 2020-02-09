@@ -1,7 +1,7 @@
 let setCellSize = function(cellElement, size) {
 	cellElement.style.width = size + '%';
 	cellElement.style.height = size + '%';
-}
+};
 
 class Cell {
 	constructor(fieldElement, game) {
@@ -13,7 +13,6 @@ class Cell {
 			className: 'cell',
 			parentElement: fieldElement
 		});
-		this.element.setAttribute('data-ship', '');
 
 		setCellSize(this.element, this.game.cellSize);
 
@@ -30,7 +29,6 @@ class Cell {
 		this._value = value;
 
 		this.element.innerHTML = value == 0 ? '' : value;
-		this.element.setAttribute('data-ship', value);
 	}
 
 	clear() {
@@ -85,7 +83,6 @@ class Cell {
 class AnimateCell {
 	constructor(fromCell, toCell) {
 		this.element = createAndAppend({className: 'cell animate'});
-		this.element.setAttribute('data-ship', fromCell.element.getAttribute('data-ship'));
 
 		setCellSize(this.element, fromCell.game.cellSize);
 
@@ -99,6 +96,6 @@ class AnimateCell {
 		
 		setTimeout(function() {
 			fromCell.fieldElement.removeChild(this.element);
-		}.bind(this), 200)
+		}.bind(this), 200);
 	}
 }
